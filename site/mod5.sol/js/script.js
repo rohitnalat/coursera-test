@@ -2,7 +2,7 @@ $(function () { // Same as document.addEventListener("DOMContentLoaded"...
 
   // Same as document.querySelector("#navbarToggle").addEventListener("blur",...
   $("#navbarToggle").blur(function (event) {
-    var screenWidth = window.innerWidth;
+    let screenWidth = window.innerWidth;
     if (screenWidth < 768) {
       $("#collapsable-nav").collapse('hide');
     }
@@ -10,45 +10,44 @@ $(function () { // Same as document.addEventListener("DOMContentLoaded"...
 });
 
 (function (global) {
+let dc = {};
 
-var dc = {};
-
-var homeHtmlUrl = "snippets/home-snippet.html";
-var allCategoriesUrl = 
+let homeHtmlUrl = "snippets/home-snippet.html";
+let allCategoriesUrl = 
   "https://davids-restaurant.herokuapp.com/categories.json";
-var categoriesTitleHtml = "snippets/categories-title-snippet.html";
-var categoryHtml = "snippets/category-snippet.html";
-var menuItemsUrl = 
+let categoriesTitleHtml = "snippets/categories-title-snippet.html";
+let categoryHtml = "snippets/category-snippet.html";
+let menuItemsUrl = 
   "https://davids-restaurant.herokuapp.com/menu_items.json?category=";
-var menuItemsTitleHtml = "snippets/menu-items-title.html";
-var menuItemHtml = "snippets/menu-item.html";
+let menuItemsTitleHtml = "snippets/menu-items-title.html";
+lrt menuItemHtml = "snippets/menu-item.html";
 
 // Convenience function for inserting innerHTML for 'select'
-var insertHtml = function (selector, html) {
-  var targetElem = document.querySelector(selector);
+let insertHtml = function (selector, html) {
+  let targetElem = document.querySelector(selector);
   targetElem.innerHTML = html;
 };
 
 // Show loading icon inside element identified by 'selector'.
-var showLoading = function (selector) {
-  var html = "<div class='text-center'>";
+let showLoading = function (selector) {
+  let html = "<div class='text-center'>";
   html += "<img src='images/ajax-loader.gif'></div>";
   insertHtml(selector, html);
 };
 
 // Return substitute of '{{propName}}' 
 // with propValue in given 'string' 
-var insertProperty = function (string, propName, propValue) {
-  var propToReplace = "{{" + propName + "}}";
+let insertProperty = function (string, propName, propValue) {
+  let propToReplace = "{{" + propName + "}}";
   string = string
     .replace(new RegExp(propToReplace, "g"), propValue);
   return string;
 }
 
 // Remove the class 'active' from home and switch to Menu button
-var switchMenuToActive = function () {
+let switchMenuToActive = ()=> {
   // Remove 'active' from home button
-  var classes = document.querySelector("#navHomeButton").className;
+  let classes = document.querySelector("#navHomeButton").className;
   classes = classes.replace(new RegExp("active", "g"), "");
   document.querySelector("#navHomeButton").className = classes;
 
@@ -102,7 +101,7 @@ function buildAndShowHomeHTML (categories) {
       // Pay attention to what type of data that function returns vs what the chosenCategoryShortName
       // variable's name implies it expects.
       
-      var chosenCategoryShortName = chooseRandomCategory(categories).short_name;      
+      let chosenCategoryShortName = chooseRandomCategory(categories).short_name;      
 
       // TODO: STEP 3: Substitute {{randomCategoryShortName}} in the home html snippet with the
       // chosen category from STEP 2. Use existing insertProperty function for that purpose.
@@ -117,7 +116,7 @@ function buildAndShowHomeHTML (categories) {
       //
 
       chosenCategoryShortName = "'" + chosenCategoryShortName + "'";
-      var homeHtmlToInsertIntoMainPage = insertProperty(homeHtml, "randomCategoryShortName", chosenCategoryShortName);
+      let homeHtmlToInsertIntoMainPage = insertProperty(homeHtml, "randomCategoryShortName", chosenCategoryShortName);
       
 
       // TODO: STEP 4: Insert the the produced HTML in STEP 3 into the main page
@@ -134,7 +133,7 @@ function buildAndShowHomeHTML (categories) {
 // Given array of category objects, returns a random category object.
 function chooseRandomCategory (categories) {
   // Choose a random index into the array (from 0 inclusively until array length (exclusively))
-  var randomArrayIndex = Math.floor(Math.random() * categories.length);
+  let randomArrayIndex = Math.floor(Math.random() * categories.length);
 
   // return category object with that randomArrayIndex
   return categories[randomArrayIndex];
@@ -192,15 +191,15 @@ function buildCategoriesViewHtml(categories,
                                  categoriesTitleHtml,
                                  categoryHtml) {
   
-  var finalHtml = categoriesTitleHtml;
+  let finalHtml = categoriesTitleHtml;
   finalHtml += "<section class='row'>";
 
   // Loop over categories
-  for (var i = 0; i < categories.length; i++) {
+  for (let i = 0; i < categories.length; i++) {
     // Insert category values
-    var html = categoryHtml;
-    var name = "" + categories[i].name;
-    var short_name = categories[i].short_name;
+    let html = categoryHtml;
+    let name = "" + categories[i].name;
+    let short_name = categories[i].short_name;
     html = 
       insertProperty(html, "name", name);
     html = 
@@ -257,13 +256,13 @@ function buildMenuItemsViewHtml(categoryMenuItems,
                    "special_instructions",
                    categoryMenuItems.category.special_instructions);
 
-  var finalHtml = menuItemsTitleHtml;
+  let finalHtml = menuItemsTitleHtml;
   finalHtml += "<section class='row'>";
 
   // Loop over menu items
-  var menuItems = categoryMenuItems.menu_items;
-  var catShortName = categoryMenuItems.category.short_name;
-  for (var i = 0; i < menuItems.length; i++) {
+  let menuItems = categoryMenuItems.menu_items;
+ let catShortName = categoryMenuItems.category.short_name;
+  for (let i = 0; i < menuItems.length; i++) {
     // Insert menu item values
     var html = menuItemHtml;
     html = 
