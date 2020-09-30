@@ -1,3 +1,10 @@
+
+/*CSS RESET*/
+*{
+	box-sizing:border-box;
+}
+
+/* To style h1 header */
 h1{
 	font-size:175%;
 	font-family: consolas;
@@ -5,12 +12,11 @@ h1{
 	text-align:center;
 	margin-bottom:15px;
 }
-*{
-	box-sizing:border-box;
-}
+
 .row{
 	width:100%;
 }
+
 #p1{
 	color:red;
 	background-color:green;
@@ -22,13 +28,8 @@ h1{
 	margin:0px 0px 30px 0px;
 	border:1px solid black;
 	padding:40px 20px 20px;
-
-
-	
-
-
-
 }
+
 #p2{
 	color:red;
 	background-color:yellow;
@@ -38,8 +39,8 @@ h1{
 	border:1px solid black;
 	padding:40px 20px 20px;
 
-
 }
+
 #p3{
 	color:red;
 	background-color:pink;
@@ -53,7 +54,7 @@ h1{
 
 
 
-
+/*Media queries for making the page responsive*/
 @media (min-width:992px){
 	.col-lg1,.col-lg2,.col-lg3,.col-lg4,.col-lg5,.col-lg6,.col-lg7,
 	.col-lg8,.col-lg9,.col-lg10,.col-lg11,.col-lg12{
@@ -99,6 +100,7 @@ h1{
 		width:100%;
 	}
 }
+
 @media (min-width:768px)and (max-width:991px){
 	.col-md1,.col-md2,.col-md3,.col-md4,.col-md5,.col-md6,.col-md7,.col-md8,.col-md9,.col-md10,
 	.col-md11,.col-md12{
